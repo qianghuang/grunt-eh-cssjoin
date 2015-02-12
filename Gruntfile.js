@@ -29,7 +29,22 @@ module.exports = function(grunt) {
     },
 
     // Configuration to be run (and then tested).
+    cssmin:{
+		cssfiles:{
+			expand:true,
+			cwd:'test/',
+			src:'**/*.css',
+			dest:"tmp/cssmin/test/"
+		}
+	},
     eh_cssjoin: {
+		files:{
+			expand:true,
+			cwd:'test/',
+			src:'**/*.css',
+			dest:"tmp/test/"
+		}
+      /*,
       default_options: {
         options: {
         },
@@ -46,6 +61,7 @@ module.exports = function(grunt) {
           'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
         }
       }
+      */
     },
 
     // Unit tests.
@@ -62,6 +78,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.

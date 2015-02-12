@@ -16,11 +16,12 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('eh_cssjoin', 'concat css @import', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      punctuation: '.',
+      punctuation: '',
       separator: ', '
     });
 
     // Iterate over all specified file groups.
+
     this.files.forEach(function(f) {
       // Concat specified files.
       var src = f.src.filter(function(filepath) {
@@ -35,7 +36,8 @@ module.exports = function(grunt) {
         // Read file source.
         return grunt.file.read(filepath);
       }).join(grunt.util.normalizelf(options.separator));
-
+	  
+	  console.log(src);
       // Handle options.
       src += options.punctuation;
 
